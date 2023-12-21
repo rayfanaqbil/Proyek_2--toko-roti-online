@@ -26,7 +26,7 @@ class AdminController extends Controller
         $data = [
             'title' => 'Admin Toko'
         ];
-        return view('contents.admin.home', $data);
+        return view('home.admin.home', $data);
     }
 
     // produk
@@ -47,7 +47,7 @@ class AdminController extends Controller
             'produk'    => $produkdb->latest()->paginate(5),
             'request'   => $request
         ];
-        return view('contents.admin.produk', $data);
+        return view('home.admin.produk', $data);
     }
 
     public function edit_produk(Request $request)
@@ -158,7 +158,7 @@ public function delete_produk(Request $request, $id)
             'edit'      => $edit,
             'request'   => $request
         ];
-        return view('contents.admin.kategori', $data);
+        return view('home.admin.kategori', $data);
     }
 
     // data proses kategori
@@ -215,7 +215,7 @@ public function delete_kategori(Request $request, $id)
             'edit'    => User::findOrFail(auth()->user()->id),
             'request' => $request,
         ];
-        return view('contents.admin.profil', $data);
+        return view('home.admin.profil', $data);
     }
 
     // data proses profil

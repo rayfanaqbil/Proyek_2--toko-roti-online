@@ -25,7 +25,7 @@ class HomeController extends Controller
             'kategori'  => Kategori::All(),
             'produk'    => $produkdb->latest()->paginate(8),
         ];
-        return view('contents.frontend.home', $data);
+        return view('home.frontend.home', $data);
     }
 
     public function kategori(Request $request, $id)
@@ -38,7 +38,7 @@ class HomeController extends Controller
             'kategori'  => Kategori::All(),
             'produk'    => $produkdb->latest()->paginate(8),
         ];
-        return view('contents.frontend.kategori', $data);
+        return view('home.frontend.kategori', $data);
     }
 
     public function search(Request $request)
@@ -57,7 +57,7 @@ class HomeController extends Controller
             'kategori'  => Kategori::All(),
             'produk'    => $produkdb->latest()->paginate(8),
         ];
-        return view('contents.frontend.kategori', $data);
+        return view('home.frontend.kategori', $data);
     }
 
     public function produk(Request $request, $id)
@@ -74,7 +74,7 @@ class HomeController extends Controller
             'profil_toko' => User::find(1),
             'edit'      => $produkdb,
         ];
-        return view('contents.frontend.produk', $data);
+        return view('home.frontend.produk', $data);
     }
 
     public function redir_admin(){
