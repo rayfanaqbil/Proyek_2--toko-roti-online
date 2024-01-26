@@ -4,17 +4,20 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class AdminMiddleware
 {
-    public function handle(Request $request, Closure $next)
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     */
+    public function handle(Request $request, Closure $next): Response
     {
-        // Periksa apakah pengguna memiliki peran admin
-        if ($request->user() && $request->user()->isAdmin()) {
-            return $next($request);
+        if(!auth()->user()->is_admin) {
+            abort(403);
         }
-
-        // Jika bukan admin, arahkan ke halaman tertentu
-        return redirect('/');
+        return $next($request);
     }
 }

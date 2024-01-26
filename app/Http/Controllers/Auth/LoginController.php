@@ -13,9 +13,9 @@ class LoginController extends Controller
     | Login Controller
     |--------------------------------------------------------------------------
     |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
+    | Controller ini menangani otentikasi pengguna untuk aplikasi dan
+    | mengarahkan mereka ke layar beranda Anda. Pengontrol menggunakan suatu sifat
+    | untuk dengan mudah menyediakan fungsionalitasnya ke aplikasi Anda.
     |
     */
 
@@ -37,4 +37,13 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function showLoginForm()
+	{
+		if (view()->exists('auth.authenticate')) {
+			return view('auth.authenticate');
+		}
+
+		return view('frontend.auth.login');
+	}
 }
